@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F08E73E1E47EF6C00823C1C /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E73D1E47EF6C00823C1C /* Macros.swift */; };
+		7F08E7401E48366E00823C1C /* CalculatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E73F1E48366E00823C1C /* CalculatorVC.swift */; };
 		7F4FF71D1E3190930073433C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4FF71C1E3190930073433C /* AppDelegate.swift */; };
 		7F4FF71F1E3190930073433C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4FF71E1E3190930073433C /* FirstViewController.swift */; };
 		7F4FF7211E3190930073433C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4FF7201E3190930073433C /* SecondViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		7F08E73D1E47EF6C00823C1C /* Macros.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
+		7F08E73F1E48366E00823C1C /* CalculatorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorVC.swift; sourceTree = "<group>"; };
 		7F4FF7191E3190930073433C /* Gary's Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gary's Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F4FF71C1E3190930073433C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F4FF71E1E3190930073433C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				7F4FF71C1E3190930073433C /* AppDelegate.swift */,
 				7F4FF71E1E3190930073433C /* FirstViewController.swift */,
+				7F08E73F1E48366E00823C1C /* CalculatorVC.swift */,
 				7F08E73D1E47EF6C00823C1C /* Macros.swift */,
 				7F4FF7201E3190930073433C /* SecondViewController.swift */,
 				7F4FF7221E3190930073433C /* Main.storyboard */,
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F08E7401E48366E00823C1C /* CalculatorVC.swift in Sources */,
 				7F08E73E1E47EF6C00823C1C /* Macros.swift in Sources */,
 				7F4FF7211E3190930073433C /* SecondViewController.swift in Sources */,
 				7F4FF71D1E3190930073433C /* AppDelegate.swift in Sources */,
