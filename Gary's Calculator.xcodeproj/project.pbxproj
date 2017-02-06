@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F08E73E1E47EF6C00823C1C /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E73D1E47EF6C00823C1C /* Macros.swift */; };
 		7F4FF71D1E3190930073433C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4FF71C1E3190930073433C /* AppDelegate.swift */; };
 		7F4FF71F1E3190930073433C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4FF71E1E3190930073433C /* FirstViewController.swift */; };
 		7F4FF7211E3190930073433C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4FF7201E3190930073433C /* SecondViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F08E73D1E47EF6C00823C1C /* Macros.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
 		7F4FF7191E3190930073433C /* Gary's Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gary's Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F4FF71C1E3190930073433C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F4FF71E1E3190930073433C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				7F4FF71C1E3190930073433C /* AppDelegate.swift */,
 				7F4FF71E1E3190930073433C /* FirstViewController.swift */,
+				7F08E73D1E47EF6C00823C1C /* Macros.swift */,
 				7F4FF7201E3190930073433C /* SecondViewController.swift */,
 				7F4FF7221E3190930073433C /* Main.storyboard */,
 				7F4FF7251E3190930073433C /* Assets.xcassets */,
@@ -263,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F08E73E1E47EF6C00823C1C /* Macros.swift in Sources */,
 				7F4FF7211E3190930073433C /* SecondViewController.swift in Sources */,
 				7F4FF71D1E3190930073433C /* AppDelegate.swift in Sources */,
 				7F4FF71F1E3190930073433C /* FirstViewController.swift in Sources */,
@@ -420,6 +424,7 @@
 				DEVELOPMENT_TEAM = R2SPC55NN5;
 				INFOPLIST_FILE = "Gary's Calculator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kvolchinskiy.garyscalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -512,6 +517,7 @@
 				7F4FF7451E3190930073433C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F4FF7461E3190930073433C /* Build configuration list for PBXNativeTarget "Gary's CalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +526,7 @@
 				7F4FF7481E3190930073433C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F4FF7491E3190930073433C /* Build configuration list for PBXNativeTarget "Gary's CalculatorUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +535,7 @@
 				7F4FF74B1E3190930073433C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
