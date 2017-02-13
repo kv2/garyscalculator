@@ -120,6 +120,7 @@ class FirstViewController: UIViewController,UIPickerViewDataSource,UIPickerViewD
         let controller = storyboard.instantiateViewController(withIdentifier: "CalculatorVC") as! CalculatorVC
         controller.calculatorNumber = sender.tag
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         self.navigationController?.pushViewController(controller, animated: true)
         

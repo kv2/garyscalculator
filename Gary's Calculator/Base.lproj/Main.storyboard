@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First View Controller-->
+        <!--Gary's Calculator-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="Gary_s_Calculator" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,7 +45,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g2S-tG-3d7">
-                                <rect key="frame" x="12" y="28" width="347" height="347"/>
+                                <rect key="frame" x="12" y="68" width="347" height="347"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="g2S-tG-3d7" secondAttribute="height" multiplier="1:1" id="UAC-M4-K95"/>
                                 </constraints>
@@ -55,7 +55,7 @@
                         <constraints>
                             <constraint firstItem="Rnd-Qp-HbY" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="1px-SZ-Vz8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="g2S-tG-3d7" secondAttribute="trailing" id="6qo-c7-Ixu"/>
-                            <constraint firstItem="g2S-tG-3d7" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" id="DHq-4T-AAd"/>
+                            <constraint firstItem="g2S-tG-3d7" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="4" id="DHq-4T-AAd"/>
                             <constraint firstItem="UE1-J8-8Vt" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="NIp-BV-4aE"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Rnd-Qp-HbY" secondAttribute="bottom" constant="64" id="OdY-eU-J80"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="UE1-J8-8Vt" secondAttribute="bottom" constant="21" id="SoY-ir-wgO"/>
@@ -64,7 +64,7 @@
                             <constraint firstItem="g2S-tG-3d7" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-4" id="q9n-ri-Q9A"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="60K-Vj-9MT"/>
+                    <navigationItem key="navigationItem" title="Gary's Calculator" id="60K-Vj-9MT"/>
                     <connections>
                         <outlet property="buttonCalc" destination="UE1-J8-8Vt" id="VUS-Ko-pq6"/>
                         <outlet property="imageView" destination="g2S-tG-3d7" id="H3m-iL-lwn"/>
@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="1551" y="-375"/>
         </scene>
-        <!--CalculatorVC-->
+        <!--Slab on Grade-->
         <scene sceneID="7BW-MK-B0P">
             <objects>
-                <viewController storyboardIdentifier="CalculatorVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HMJ-Oy-C6h" customClass="CalculatorVC" customModule="Gary_s_Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalculatorVC" title="Slab on Grade" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HMJ-Oy-C6h" customClass="CalculatorVC" customModule="Gary_s_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y17-62-7yN"/>
                         <viewControllerLayoutGuide type="bottom" id="bQM-HL-JRP"/>
@@ -89,7 +89,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pJz-3R-CvZ" customClass="GCScrollView" customModule="Gary_s_Calculator" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="1179"/>
+                                <rect key="frame" x="0.0" y="-1" width="375" height="1200"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jur-Ce-2Q3">
                                         <rect key="frame" x="0.0" y="48" width="375" height="48"/>
@@ -818,7 +818,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="pJz-3R-CvZ" firstAttribute="top" secondItem="y17-62-7yN" secondAttribute="bottom" id="7vm-fY-YAJ"/>
+                            <constraint firstItem="pJz-3R-CvZ" firstAttribute="top" secondItem="y17-62-7yN" secondAttribute="bottom" constant="-65" id="7vm-fY-YAJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pJz-3R-CvZ" secondAttribute="trailing" constant="-16" id="bcg-j5-fb5"/>
                             <constraint firstItem="pJz-3R-CvZ" firstAttribute="leading" secondItem="RCr-rr-Hsn" secondAttribute="leadingMargin" constant="-16" id="pBj-Ip-Nba"/>
                             <constraint firstItem="bQM-HL-JRP" firstAttribute="top" secondItem="pJz-3R-CvZ" secondAttribute="bottom" constant="-48" id="uoX-cp-Ow9"/>
@@ -830,6 +830,9 @@
                         <outlet property="buttonCalculate" destination="1dN-aL-r1o" id="hLt-g8-l11"/>
                         <outlet property="constraintBottom" destination="aux-cL-l8n" id="mXu-O8-cFe"/>
                         <outlet property="scrollView" destination="pJz-3R-CvZ" id="ZZE-BK-9WE"/>
+                        <outlet property="textFieldCalcSOGCodeHeightIn" destination="QYa-eL-qwz" id="7Fb-J0-JEG"/>
+                        <outlet property="textFieldCalcSOGCodeWidthIn" destination="IdQ-xf-NMA" id="cDs-Mv-DlB"/>
+                        <outlet property="textFieldCalcSOGWidthIn" destination="1RT-3L-Jiy" id="H2q-YH-bWv"/>
                         <outlet property="textFieldDLFloorPerSF" destination="pgM-14-fvM" id="AoW-KJ-KlN"/>
                         <outlet property="textFieldDLRoofPerSF" destination="bg8-gB-Ibs" id="0Yd-Sh-UxC"/>
                         <outlet property="textFieldDLWallPerSF" destination="LuS-3K-2Ie" id="r3c-d1-2Tf"/>
@@ -843,7 +846,7 @@
                         <outlet property="textFieldNumberOfFloors" destination="dGR-7k-e7n" id="G2E-Jz-z3D"/>
                         <outlet property="textFieldSoil" destination="aMe-YB-peh" id="5Ya-HS-sJU"/>
                         <outlet property="textFieldSoilBearingCapacity" destination="rNy-cZ-I5q" id="LwN-xS-ZNf"/>
-                        <outlet property="textFieldTotalLoadOnFloor" destination="4wb-xK-zKs" id="m1L-fe-5r9"/>
+                        <outlet property="textFieldTotalLoadOnFooting" destination="4wb-xK-zKs" id="0Jf-kq-ElZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GqU-OH-f6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -853,8 +856,8 @@
         <!--Calculator-->
         <scene sceneID="9KO-pP-xDa">
             <objects>
-                <navigationController navigationBarHidden="YES" id="pvk-IQ-GVW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calculator" image="second" id="Xvh-GT-QGZ">
+                <navigationController id="pvk-IQ-GVW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Calculator" image="tabbarIconFx" id="Xvh-GT-QGZ">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lg6-yT-LvT">
@@ -882,14 +885,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="83" y="313" width="209" height="41"/>
+                                <rect key="frame" x="83" y="313" width="210" height="42"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="80" y="362" width="215" height="17"/>
+                                <rect key="frame" x="80" y="363" width="215" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -903,7 +906,7 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Reference" image="second" id="cPa-gy-q4n">
+                    <tabBarItem key="tabBarItem" title="Reference" image="tabbarIconInfo" id="cPa-gy-q4n">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
                 </viewController>
@@ -932,6 +935,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="second" width="30" height="30"/>
+        <image name="tabbarIconFx" width="30" height="30"/>
+        <image name="tabbarIconInfo" width="30" height="30"/>
     </resources>
 </document>

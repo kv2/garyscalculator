@@ -26,16 +26,17 @@ class CalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,U
     @IBOutlet weak var textFieldDepthOfRoofFT: UITextField!
 
     @IBOutlet weak var textFieldFactorOfSafety: UITextField!
+    @IBOutlet weak var textFieldNumberOfFloors: UITextField!
     @IBOutlet weak var textFieldSoil: UITextField!
     @IBOutlet weak var textFieldLiveLoad: UITextField!
     
     
     
     
-    @IBOutlet weak var textFieldNumberOfFloors: UITextField!
+    
     @IBOutlet weak var textFieldSoilBearingCapacity: UITextField!
     @IBOutlet weak var textFieldLiveLoadOnFloor: UITextField!
-    @IBOutlet weak var textFieldTotalLoadOnFloor: UITextField!
+    @IBOutlet weak var textFieldTotalLoadOnFooting: UITextField!
     
     
     
@@ -48,6 +49,9 @@ class CalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,U
     var pickerSoil: UIPickerView!
     var pickerLiveLoad: UIPickerView!
     var pickerNumberOfFloors: UIPickerView!
+    
+    var totalLoadOnFooting: Float = 0
+    
     
     let pickerDataSoil = ["Class 1: Crystalline bedrock",
                           "Class 2: Sedimentary and foliated rock",
@@ -172,7 +176,7 @@ class CalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,U
   
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
-
+       
         
         if(textField === self.textFieldSoil ){
             
@@ -212,6 +216,8 @@ class CalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,U
             cancelEditing()
             
         }
+        
+        _ = calculateTotalLoad()
         
         return true
     }
@@ -303,7 +309,7 @@ class CalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,U
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        print("did select")
+    
         
         if(pickerView === pickerSoil){
             
@@ -355,7 +361,7 @@ class CalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,U
         }
 
         
-        
+        _ = calculateTotalLoad()
         
         
     }
@@ -377,49 +383,122 @@ class CalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,U
     }
     
     
+    func checkIfLoadValuesAreSet() -> Bool{
     
+        let deadloadOfWall = Float(textFieldDLWallPerSF.text!)
+        let deadLoadOfFloor = Float(textFieldDLFloorPerSF.text!)
+        
+        
+        let deadLoadOfRoof = Float(textFieldDLRoofPerSF.text!)
+        let liveLoadOfRoof = Float(textFieldLLRoofPerSF.text!)
+        
+        
+        let tribHeightOfEachWall = Float(textFieldHeightEachWallFT.text!)
+        let tribDepthOfFloor = Float(textFieldDepthOfFloorFT.text!)
+        
+        
+        let tribDepthOfRoof = Float(textFieldDepthOfRoofFT.text!)
+        
+
+        let liveLoadOnFloor = Float(textFieldLiveLoadOnFloor.text!)
+        
+            
+        if( (deadloadOfWall != nil) &&
+            (deadLoadOfFloor != nil) &&
+            (deadLoadOfRoof != nil)  &&
+            (liveLoadOfRoof != nil) &&
+            (tribHeightOfEachWall != nil)  &&
+            (tribDepthOfFloor != nil) &&
+            (tribDepthOfRoof != nil) &&
+            (liveLoadOnFloor != nil)){
+            
+            return true
+        }
+        
+        
+        return false
+    }
     
+    func calculateTotalLoad() -> Bool{
+    
+        
+        if(!checkIfLoadValuesAreSet()){
+            
+            print ("null values")
+            return false
+        }
+        
+        
+        let deadloadOfWall: Float = Float(textFieldDLWallPerSF.text!)!
+        let deadLoadOfFloor: Float = Float(textFieldDLFloorPerSF.text!)!
+        
+        
+        let deadLoadOfRoof: Float = Float(textFieldDLRoofPerSF.text!)!
+        let liveLoadOfRoof: Float = Float(textFieldLLRoofPerSF.text!)!
+        
+        
+        let tribHeightOfEachWall: Float = Float(textFieldHeightEachWallFT.text!)!
+        let tribDepthOfFloor: Float = Float(textFieldDepthOfFloorFT.text!)!
+        
+        
+        let tribDepthOfRoof: Float = Float(textFieldDepthOfRoofFT.text!)!
+        
+  
+        
+        let numOfFloors: Float = Float(textFieldNumberOfFloors.text!)!
+
+        let liveLoadOnFloor: Float = Float(textFieldLiveLoadOnFloor.text!)!
+        
+        
+
+        
+        
+        totalLoadOnFooting =    Float((numOfFloors * deadloadOfWall * tribHeightOfEachWall) +
+            (numOfFloors * tribDepthOfFloor * (deadLoadOfFloor + liveLoadOnFloor)) +
+            (tribDepthOfRoof * (deadLoadOfRoof + liveLoadOfRoof)))
+        
+        
+        textFieldTotalLoadOnFooting.text = String.localizedStringWithFormat("%.2f", totalLoadOnFooting)
+       
+     
+        
+        return true
+
+    
+    }
     
     
     @IBAction func calculateValues(){
         
         
-    
+        cancelEditing()
         
-        let deadloadOfWall: Int = Int(textFieldDLWallPerSF.text!)!
-        let deadLoadOfFloor: Int = Int(textFieldDLFloorPerSF.text!)!
-        let deadLoadOfRoof: Int = Int(textFieldDLRoofPerSF.text!)!
-        let liveLoadOfRoof: Int = Int(textFieldLLRoofPerSF.text!)!
-        
-        let tribHeightOfEachWall: Int = Int(textFieldHeightEachWallFT.text!)!
-        let tribDepthOfFloor: Int = Int(textFieldDepthOfFloorFT.text!)!
-        let tribDepthOfRoof: Int = Int(textFieldDepthOfRoofFT.text!)!
-        
-        
-        let factorOfSafety: Int = Int(textFieldFactorOfSafety.text!)!
-        let numOfFloors: Int = Int(textFieldDLWallPerSF.text!)!
-        let soilBearingCapacity: Int = Int(textFieldSoilBearingCapacity.text!)!
-        let liveLoadOnFloor: Int = Int(textFieldLiveLoadOnFloor.text!)!
-        
-        
-        /////
-        
-        
-        let totalLoadOnFooting =    (numOfFloors * deadloadOfWall * tribHeightOfEachWall) +
-                                    (numOfFloors * tribDepthOfFloor * (deadLoadOfFloor + liveLoadOnFloor)) +
-                                    (tribDepthOfRoof * (deadLoadOfRoof + liveLoadOfRoof))
-        
-        
+        if(!calculateTotalLoad()){
+            
+            print("null vals2")
+            return
+        }
 
+        
+        let numOfFloors: Float = Float(textFieldNumberOfFloors.text!)!
+        
+        print(textFieldTotalLoadOnFooting.text ?? 0)
+      
+        let factorOfSafety: Float = Float(textFieldFactorOfSafety.text!)!
+     
+        let soilBearingCapacity: Float = Float(textFieldSoilBearingCapacity.text!)!
+     
+        
         let resultantWidthOfFooting = factorOfSafety * totalLoadOnFooting / soilBearingCapacity * 12
         
-        var resultantHeightOfFooting  = 0
+        var resultantHeightOfFooting: Float  = 0
+        var resultantMinWidthOfFootingByCode: Float = 0
         
-        var resultantMinWidthOfFootingByCode = 0
-        
+   
         
         if(numOfFloors == 0){
             
+   
             resultantHeightOfFooting = 6
             resultantMinWidthOfFootingByCode = 12
             
@@ -434,12 +513,12 @@ class CalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,U
             resultantMinWidthOfFootingByCode = 18
             
         }
-        
+    
+         print("4")
         
         textFieldCalcSOGWidthIn.text = String.localizedStringWithFormat("%.2f", resultantWidthOfFooting)
         textFieldCalcSOGCodeWidthIn.text = String.localizedStringWithFormat("%.2f", resultantMinWidthOfFootingByCode)
         textFieldCalcSOGCodeHeightIn.text = String.localizedStringWithFormat("%.2f", resultantHeightOfFooting)
-        
         
     }
     
