@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F08E73E1E47EF6C00823C1C /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E73D1E47EF6C00823C1C /* Macros.swift */; };
-		7F08E7401E48366E00823C1C /* CalculatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E73F1E48366E00823C1C /* CalculatorVC.swift */; };
+		7F08E7401E48366E00823C1C /* GCSOGCalculatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E73F1E48366E00823C1C /* GCSOGCalculatorVC.swift */; };
 		7F22A8781E514B9500D14E5E /* GCScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F22A8771E514B9500D14E5E /* GCScrollView.swift */; };
 		7F4FF71D1E3190930073433C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4FF71C1E3190930073433C /* AppDelegate.swift */; };
 		7F4FF71F1E3190930073433C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4FF71E1E3190930073433C /* FirstViewController.swift */; };
@@ -18,6 +18,7 @@
 		7F4FF7291E3190930073433C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F4FF7271E3190930073433C /* LaunchScreen.storyboard */; };
 		7F4FF7341E3190930073433C /* Gary_s_CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4FF7331E3190930073433C /* Gary_s_CalculatorTests.swift */; };
 		7F4FF73F1E3190930073433C /* Gary_s_CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4FF73E1E3190930073433C /* Gary_s_CalculatorUITests.swift */; };
+		7FD79F4D1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD79F4C1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC copy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +40,7 @@
 
 /* Begin PBXFileReference section */
 		7F08E73D1E47EF6C00823C1C /* Macros.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
-		7F08E73F1E48366E00823C1C /* CalculatorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorVC.swift; sourceTree = "<group>"; };
+		7F08E73F1E48366E00823C1C /* GCSOGCalculatorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCSOGCalculatorVC.swift; sourceTree = "<group>"; };
 		7F22A8771E514B9500D14E5E /* GCScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCScrollView.swift; sourceTree = "<group>"; };
 		7F4FF7191E3190930073433C /* Gary's Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gary's Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F4FF71C1E3190930073433C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +56,7 @@
 		7F4FF73A1E3190930073433C /* Gary's CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gary's CalculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F4FF73E1E3190930073433C /* Gary_s_CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gary_s_CalculatorUITests.swift; sourceTree = "<group>"; };
 		7F4FF7401E3190930073433C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FD79F4C1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GCLinearSpreadFootingCalculatorVC copy.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +110,8 @@
 				7F22A8771E514B9500D14E5E /* GCScrollView.swift */,
 				7F4FF71C1E3190930073433C /* AppDelegate.swift */,
 				7F4FF71E1E3190930073433C /* FirstViewController.swift */,
-				7F08E73F1E48366E00823C1C /* CalculatorVC.swift */,
+				7F08E73F1E48366E00823C1C /* GCSOGCalculatorVC.swift */,
+				7FD79F4C1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC copy.swift */,
 				7F08E73D1E47EF6C00823C1C /* Macros.swift */,
 				7F4FF7201E3190930073433C /* SecondViewController.swift */,
 				7F4FF7221E3190930073433C /* Main.storyboard */,
@@ -272,7 +275,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F08E7401E48366E00823C1C /* CalculatorVC.swift in Sources */,
+				7F08E7401E48366E00823C1C /* GCSOGCalculatorVC.swift in Sources */,
+				7FD79F4D1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC copy.swift in Sources */,
 				7F08E73E1E47EF6C00823C1C /* Macros.swift in Sources */,
 				7F4FF7211E3190930073433C /* SecondViewController.swift in Sources */,
 				7F4FF71D1E3190930073433C /* AppDelegate.swift in Sources */,

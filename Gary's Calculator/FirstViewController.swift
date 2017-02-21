@@ -16,6 +16,8 @@ class FirstViewController: UIViewController,UIPickerViewDataSource,UIPickerViewD
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var buttonCalc: UIButton!
     
+    var calculatorNumber = 0;
+    
     let pickerData = ["Slab on Grade","Linear Spread Footing","Column Pad Footing","End Bearing Deep Foundation","Side Friction Deep Foundation"]
     override func viewDidLoad() {
         
@@ -91,6 +93,8 @@ class FirstViewController: UIViewController,UIPickerViewDataSource,UIPickerViewD
         
         }
         
+        calculatorNumber = row
+        
         
      
     }
@@ -115,17 +119,108 @@ class FirstViewController: UIViewController,UIPickerViewDataSource,UIPickerViewD
     @IBAction func calculateButtonPressed(sender: UIButton!) {
         
         
+        switch(calculatorNumber) {
+        case 0 :
+            
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "GCSOGCalculatorVC") as! GCSOGCalculatorVC
+                        
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+
+            break;
+            
+            
+        case 1 :
+            
+            
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "GCLinearSpreadFootingVC") as! GCLinearSpreadFootingVC
+            
+            
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+            
+            break;
+            
+            
+        case 2 :
+            
+            
+            
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let controller = storyboard.instantiateViewController(withIdentifier: "GCColumnPadFootingVC") as! GCColumnPadFootingVC
+//            
+//            
+//            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+//            
+//            self.navigationController?.pushViewController(controller, animated: true)
+//            
+            break;
+            
+        case 3 :
+            
+            
+            
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let controller = storyboard.instantiateViewController(withIdentifier: "GCEndBearingPileVC") as! GCEndBearingPileVC
+//            
+//            
+//            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+//            
+//            self.navigationController?.pushViewController(controller, animated: true)
+//            
+            break;
+            
+        case 4 :
+            
+            
+            
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let controller = storyboard.instantiateViewController(withIdentifier: "GCSideFrictionPileVC") as! GCSideFrictionPileVC
+//            
+//            
+//            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+//            
+//            self.navigationController?.pushViewController(controller, animated: true)
+//            
+            break;
+            
+            
+            
+            
+        default : /* Optional */
+            
+            
+            
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "GCSOGCalculatorVC") as! GCSOGCalculatorVC
+            
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+            
+            
+        }
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "CalculatorVC") as! CalculatorVC
-        controller.calculatorNumber = sender.tag
         
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        self.navigationController?.pushViewController(controller, animated: true)
+        
         
         
     }
+    
+    
+    
+    
+    
+    
+    
     
 //    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
 //       

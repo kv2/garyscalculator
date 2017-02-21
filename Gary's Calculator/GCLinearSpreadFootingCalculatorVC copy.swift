@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate{
+class GCLinearSpreadFootingVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate{
     
 
     @IBOutlet weak var constraintBottom: NSLayoutConstraint!
@@ -64,14 +64,14 @@ class CalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,U
                               "Residential"]
     
     
-    let pickerDataNumberOfFloors = ["0", "1" , "2"]
+    let pickerDataNumberOfFloors = ["0", "1" , "2", "3"]
     
     
     
     public var calculatorTag = 0
     
     
-    var calculatorNumber = 0
+
 
     var numberTranslateTextfield = 50
     var numberTranslatePicker = 150
@@ -476,6 +476,7 @@ class CalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,U
         if(!calculateTotalLoad()){
             
             print("null vals2")
+            showAlert(titleStr: "Error", messageStr: "Please make sure all fields are filled and try again")
             return
         }
 
@@ -514,12 +515,22 @@ class CalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,U
             
         }
     
-         print("4")
         
         textFieldCalcSOGWidthIn.text = String.localizedStringWithFormat("%.2f", resultantWidthOfFooting)
         textFieldCalcSOGCodeWidthIn.text = String.localizedStringWithFormat("%.2f", resultantMinWidthOfFootingByCode)
         textFieldCalcSOGCodeHeightIn.text = String.localizedStringWithFormat("%.2f", resultantHeightOfFooting)
         
+    }
+    
+    func showAlert(titleStr:String,messageStr:String ) {
+        
+        let alert = UIAlertController(title: titleStr, message: messageStr, preferredStyle: UIAlertControllerStyle.alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
