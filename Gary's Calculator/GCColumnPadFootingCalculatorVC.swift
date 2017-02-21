@@ -9,7 +9,7 @@
 import UIKit
 
 
-class GCSOGCalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate{
+class GCColumnPadFootingVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate{
     
 
     @IBOutlet weak var constraintBottom: NSLayoutConstraint!
@@ -64,14 +64,14 @@ class GCSOGCalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSou
                               "Residential"]
     
     
-    let pickerDataNumberOfFloors = ["0", "1" , "2"]
+    let pickerDataNumberOfFloors = ["0", "1" , "2", "3"]
     
     
     
     public var calculatorTag = 0
     
     
- 
+
 
     var numberTranslateTextfield = 50
     var numberTranslatePicker = 150
@@ -425,7 +425,6 @@ class GCSOGCalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSou
         if(!checkIfLoadValuesAreSet()){
             
             print ("null values")
-            
             return false
         }
         
@@ -522,7 +521,6 @@ class GCSOGCalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSou
         textFieldCalcSOGCodeHeightIn.text = String.localizedStringWithFormat("%.2f", resultantHeightOfFooting)
         
     }
-    
     
     func showAlert(titleStr:String,messageStr:String ) {
         

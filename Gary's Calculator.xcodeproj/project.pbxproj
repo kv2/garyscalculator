@@ -18,7 +18,8 @@
 		7F4FF7291E3190930073433C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F4FF7271E3190930073433C /* LaunchScreen.storyboard */; };
 		7F4FF7341E3190930073433C /* Gary_s_CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4FF7331E3190930073433C /* Gary_s_CalculatorTests.swift */; };
 		7F4FF73F1E3190930073433C /* Gary_s_CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4FF73E1E3190930073433C /* Gary_s_CalculatorUITests.swift */; };
-		7FD79F4D1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD79F4C1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC copy.swift */; };
+		7FD79F4D1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD79F4C1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC.swift */; };
+		7FD79F521E5CAC1C0063DA09 /* GCColumnPadFootingCalculatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD79F511E5CAC1C0063DA09 /* GCColumnPadFootingCalculatorVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +57,8 @@
 		7F4FF73A1E3190930073433C /* Gary's CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gary's CalculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F4FF73E1E3190930073433C /* Gary_s_CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gary_s_CalculatorUITests.swift; sourceTree = "<group>"; };
 		7F4FF7401E3190930073433C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7FD79F4C1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GCLinearSpreadFootingCalculatorVC copy.swift"; sourceTree = "<group>"; };
+		7FD79F4C1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCLinearSpreadFootingCalculatorVC.swift; sourceTree = "<group>"; };
+		7FD79F511E5CAC1C0063DA09 /* GCColumnPadFootingCalculatorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCColumnPadFootingCalculatorVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,10 +112,9 @@
 				7F22A8771E514B9500D14E5E /* GCScrollView.swift */,
 				7F4FF71C1E3190930073433C /* AppDelegate.swift */,
 				7F4FF71E1E3190930073433C /* FirstViewController.swift */,
-				7F08E73F1E48366E00823C1C /* GCSOGCalculatorVC.swift */,
-				7FD79F4C1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC copy.swift */,
-				7F08E73D1E47EF6C00823C1C /* Macros.swift */,
 				7F4FF7201E3190930073433C /* SecondViewController.swift */,
+				7FD79F501E5CABFA0063DA09 /* CalculatorVCs */,
+				7F08E73D1E47EF6C00823C1C /* Macros.swift */,
 				7F4FF7221E3190930073433C /* Main.storyboard */,
 				7F4FF7251E3190930073433C /* Assets.xcassets */,
 				7F4FF7271E3190930073433C /* LaunchScreen.storyboard */,
@@ -138,6 +139,16 @@
 				7F4FF7401E3190930073433C /* Info.plist */,
 			);
 			path = "Gary's CalculatorUITests";
+			sourceTree = "<group>";
+		};
+		7FD79F501E5CABFA0063DA09 /* CalculatorVCs */ = {
+			isa = PBXGroup;
+			children = (
+				7F08E73F1E48366E00823C1C /* GCSOGCalculatorVC.swift */,
+				7FD79F4C1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC.swift */,
+				7FD79F511E5CAC1C0063DA09 /* GCColumnPadFootingCalculatorVC.swift */,
+			);
+			name = CalculatorVCs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,9 +287,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F08E7401E48366E00823C1C /* GCSOGCalculatorVC.swift in Sources */,
-				7FD79F4D1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC copy.swift in Sources */,
+				7FD79F4D1E5C9B670063DA09 /* GCLinearSpreadFootingCalculatorVC.swift in Sources */,
 				7F08E73E1E47EF6C00823C1C /* Macros.swift in Sources */,
 				7F4FF7211E3190930073433C /* SecondViewController.swift in Sources */,
+				7FD79F521E5CAC1C0063DA09 /* GCColumnPadFootingCalculatorVC.swift in Sources */,
 				7F4FF71D1E3190930073433C /* AppDelegate.swift in Sources */,
 				7F4FF71F1E3190930073433C /* FirstViewController.swift in Sources */,
 				7F22A8781E514B9500D14E5E /* GCScrollView.swift in Sources */,

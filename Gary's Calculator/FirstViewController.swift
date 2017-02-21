@@ -136,7 +136,6 @@ class FirstViewController: UIViewController,UIPickerViewDataSource,UIPickerViewD
         case 1 :
             
             
-            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "GCLinearSpreadFootingVC") as! GCLinearSpreadFootingVC
             
@@ -151,15 +150,14 @@ class FirstViewController: UIViewController,UIPickerViewDataSource,UIPickerViewD
         case 2 :
             
             
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "GCColumnPadFootingVC") as! GCColumnPadFootingVC
             
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let controller = storyboard.instantiateViewController(withIdentifier: "GCColumnPadFootingVC") as! GCColumnPadFootingVC
-//            
-//            
-//            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//            
-//            self.navigationController?.pushViewController(controller, animated: true)
-//            
+            
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+            
             break;
             
         case 3 :
