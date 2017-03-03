@@ -9,7 +9,7 @@
 import UIKit
 
 
-class GCColumnPadFootingVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate{
+class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate{
     
 
     @IBOutlet weak var constraintBottom: NSLayoutConstraint!
