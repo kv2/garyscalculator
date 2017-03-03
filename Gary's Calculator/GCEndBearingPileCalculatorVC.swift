@@ -17,43 +17,43 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
     
     //value holders
     
-    @IBOutlet weak var textFieldStructGridBayWidth: UITextField!
-    @IBOutlet weak var textFieldStructGridBayLength: UITextField!
-    @IBOutlet weak var textFieldDL: UITextField!
+    
+    @IBOutlet weak var textFieldBldgHeight: UITextField!
+    @IBOutlet weak var textFieldBldgLength: UITextField!
+    @IBOutlet weak var textFieldTotalBldgSF: UITextField!
+    @IBOutlet weak var textFieldDeadload: UITextField!
     
     
-    @IBOutlet weak var textFieldFactorOfSafety: UITextField!
-    @IBOutlet weak var textFieldNumberOfFloors: UITextField!
+    @IBOutlet weak var textFieldWindspeed: UITextField!
+    @IBOutlet weak var textFieldCompressiveStrengthConcrete: UITextField!
+    @IBOutlet weak var textFieldfactorOfSafetyMoment: UITextField!
+    @IBOutlet weak var textFieldFactorOfSafetyConcreteCompressiveStrength: UITextField!
+    @IBOutlet weak var textFieldPileSection: UITextField!
+    @IBOutlet weak var labelPileSectionDimension: UILabel!
+    @IBOutlet weak var textFieldPileSectionDimension: UITextField!
     @IBOutlet weak var textFieldSoil: UITextField!
     @IBOutlet weak var textFieldLiveLoad: UITextField!
     
     
-    @IBOutlet weak var textFieldTribAreaPerimeterColumn: UITextField!
-    @IBOutlet weak var textFieldTribAreaCornerColumn: UITextField!
-    @IBOutlet weak var textFieldTribAreaRegularColumn: UITextField!
+    @IBOutlet weak var textFieldWindPressure: UITextField!
+    @IBOutlet weak var textFieldWindForce: UITextField!
+    @IBOutlet weak var textFieldOverturningMoment: UITextField!
     
-    @IBOutlet weak var textFieldLoadPerimColumn: UITextField!
-    @IBOutlet weak var textFieldLoadCornerColumn: UITextField!
-    @IBOutlet weak var textFieldLoadRegularColumn: UITextField!
-
+    @IBOutlet weak var textFieldBldgRestorativeMoment: UITextField!
+    @IBOutlet weak var textFieldRestorativeMomentExceededBy: UITextField!
+    
     
     @IBOutlet weak var textFieldSoilBearingCapacity: UITextField!
-    @IBOutlet weak var textFieldLiveLoadOnFloor: UITextField!
-    @IBOutlet weak var textFieldTotalLoadOnFooting: UITextField!
+    @IBOutlet weak var textFieldLiveLoadOnFloors: UITextField!
     
-    
-    
-    @IBOutlet weak var textFieldPerimeterFooting: UITextField!
-    @IBOutlet weak var textFieldCornerFooting: UITextField!
-    @IBOutlet weak var textFieldRegularFooting: UITextField!
-    
-    
+    @IBOutlet weak var textFieldMinDepthOfPile: UITextField!
+    @IBOutlet weak var textFieldNumberOfPilesNeeded: UITextField!
     
     @IBOutlet weak var buttonCalculate: UIButton!
     
     var pickerSoil: UIPickerView!
     var pickerLiveLoad: UIPickerView!
-    var pickerNumberOfFloors: UIPickerView!
+    var pickerPileSection: UIPickerView!
     
     var totalLoadOnFooting: Float = 0
     
@@ -69,7 +69,7 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
                               "Residential", "Assembly (Movable Seats)"]
     
     
-    let pickerDataNumberOfFloors = ["0", "1" , "2", "3", "4", "5", "6"]
+    let pickerDataPileSection = ["Round","Square"]
     
     
     var perimLoadFloat: Float = 0
@@ -139,27 +139,29 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
         
         ///////
         
-        
-        pickerNumberOfFloors = UIPickerView()
-        pickerNumberOfFloors.delegate = self
-        pickerNumberOfFloors.dataSource = self
-
-        let toolBarFloors = UIToolbar()
-        toolBarFloors.barStyle = UIBarStyle.default
-        toolBarFloors.isTranslucent = true
-        toolBarFloors.sizeToFit()
-        
-        let doneButtonFloors = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(donePickerFloors))
-        let spaceButtonFloors = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButtonFloors = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelEditing))
-        
-        toolBarFloors.setItems([cancelButtonFloors, spaceButtonFloors, doneButtonFloors], animated: false)
-        toolBarFloors.isUserInteractionEnabled = true
-        
-        textFieldNumberOfFloors.inputView = pickerNumberOfFloors
-        textFieldNumberOfFloors.inputAccessoryView = toolBarFloors
 
         
+        /////
+        
+        
+        pickerPileSection = UIPickerView()
+        pickerPileSection.delegate = self
+        pickerPileSection.dataSource = self
+        
+        let toolBarSection = UIToolbar()
+        toolBarSection.barStyle = UIBarStyle.default
+        toolBarSection.isTranslucent = true
+        toolBarSection.sizeToFit()
+        
+        let doneButtonSection = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(donePickerPileSection))
+        let spaceButtonSection = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButtonSection = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelEditing))
+        
+        toolBarSection.setItems([cancelButtonSection, spaceButtonSection, doneButtonSection], animated: false)
+        toolBarSection.isUserInteractionEnabled = true
+        
+        textFieldPileSection.inputView = pickerPileSection
+        textFieldPileSection.inputAccessoryView = toolBarSection
         
         
     }
@@ -191,9 +193,9 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
             
              pickerLiveLoad.delegate?.pickerView!(pickerLiveLoad, didSelectRow: 0, inComponent: 0)
             
-        } else if (textField === self.textFieldNumberOfFloors){
+        } else if (textField === self.textFieldPileSection){
             
-             pickerNumberOfFloors.delegate?.pickerView!(pickerNumberOfFloors, didSelectRow: 0, inComponent: 0)
+             pickerPileSection.delegate?.pickerView!(pickerPileSection, didSelectRow: 0, inComponent: 0)
             
         }
         
@@ -236,8 +238,16 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
     }
     
     func donePickerSoil(){
-    
+        
         textFieldLiveLoad.becomeFirstResponder()
+        let translationNumber = 6 * numberTranslateTextfield
+        scrollView.setContentOffset(CGPoint(x: 0, y: translationNumber), animated: true)
+        
+    }
+    
+    func donePickerPileSection(){
+        
+        textFieldPileSection.becomeFirstResponder()
         let translationNumber = 6 * numberTranslateTextfield
         scrollView.setContentOffset(CGPoint(x: 0, y: translationNumber), animated: true)
         
@@ -283,7 +293,7 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
             
         } else {
             
-            return pickerDataNumberOfFloors.count
+            return pickerDataPileSection.count
         }
         
         
@@ -303,7 +313,7 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
             
         } else {//if (pickerView == pickerNumberOfFloors){
             
-           return pickerDataNumberOfFloors[row]
+           return pickerDataPileSection[row]
             
         }
         
@@ -348,22 +358,22 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
             
             if(row == 0){
                 
-                textFieldLiveLoadOnFloor.text = "50"
+                textFieldLiveLoadOnFloors.text = "50"
                 
             } else if(row == 1){
                 
-                textFieldLiveLoadOnFloor.text = "40"
+                textFieldLiveLoadOnFloors.text = "40"
                 
             } else if(row == 2){
                 
-                textFieldLiveLoadOnFloor.text = "100"
+                textFieldLiveLoadOnFloors.text = "100"
                 
             }
             
             
-        } else if(pickerView === pickerNumberOfFloors){
+        } else if(pickerView === pickerPileSection){
             
-            textFieldNumberOfFloors.text = pickerDataNumberOfFloors[row]
+            
             
             
         }
@@ -394,26 +404,18 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
     func checkIfLoadValuesAreSet() -> Bool{
     
         
-        let bayWidth = Float(textFieldStructGridBayWidth.text!)
-        let bayLength = Float(textFieldStructGridBayLength.text!)
-        let deadload = Float(textFieldDL.text!)
-     
-        let soilBearingCapacity = Float(textFieldSoilBearingCapacity.text!)
-        let liveLoadOnFloor = Float(textFieldLiveLoadOnFloor.text!)
-
-        let numberOfFloors = Float(textFieldNumberOfFloors.text!)
-      
-        
-            
-        if( (bayWidth != nil) &&
-            (bayLength != nil) &&
-            (deadload != nil)  &&
-            (soilBearingCapacity != nil) &&
-            (liveLoadOnFloor != nil) &&
-            (numberOfFloors != nil)){
-            
-            return true
-        }
+//        //let bayWidth = Float(textFieldStructGridBayWidth.text!)
+//
+//            
+//        if( (bayWidth != nil) &&
+//            (bayLength != nil) &&
+//            (deadload != nil)  &&
+//            (soilBearingCapacity != nil) &&
+//            (liveLoadOnFloor != nil) &&
+//            (numberOfFloors != nil)){
+//            
+//            return true
+//        }
         
         
         return false
@@ -428,42 +430,42 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
             return false
         }
         
-        
-        let bayWidth: Float = Float(textFieldStructGridBayWidth.text!)!
-        let bayLength: Float = Float(textFieldStructGridBayLength.text!)!
-        let deadload: Float = Float(textFieldDL.text!)!
-
-
-        let numOfFloors: Float = Float(textFieldNumberOfFloors.text!)!
-        let liveLoadOnFloor: Float = Float(textFieldLiveLoadOnFloor.text!)!
-        
-        
-        let tribAreaPerim: Float = bayWidth*bayLength/2.0
-        let tribAreaCorner: Float = bayWidth*bayLength/4.0
-        let tribAreaRegular: Float = bayWidth*bayLength
-        
-        let totalLoad: Float = deadload+liveLoadOnFloor
-        
-        let perimLoad: Float = tribAreaPerim*totalLoad*numOfFloors
-        let cornerLoad: Float = tribAreaCorner*totalLoad*numOfFloors
-        let regularLoad: Float = tribAreaRegular*totalLoad*numOfFloors
-        
-        perimLoadFloat = perimLoad
-        cornerLoadFloat = cornerLoad
-        regularLoadFloat = regularLoad
-        
-        
-        textFieldTribAreaPerimeterColumn.text = String.localizedStringWithFormat("%.1f", tribAreaPerim)
-        textFieldTribAreaCornerColumn.text = String.localizedStringWithFormat("%.1f", tribAreaCorner)
-        textFieldTribAreaRegularColumn.text = String.localizedStringWithFormat("%.1f", tribAreaRegular)
-        
-        textFieldLoadPerimColumn.text = String.localizedStringWithFormat("%.1f", perimLoad)
-        textFieldLoadCornerColumn.text = String.localizedStringWithFormat("%.1f", cornerLoad)
-        textFieldLoadRegularColumn.text = String.localizedStringWithFormat("%.1f", regularLoad)
-        
-        
-
-        
+//        
+//        let bayWidth: Float = Float(textFieldStructGridBayWidth.text!)!
+//        let bayLength: Float = Float(textFieldStructGridBayLength.text!)!
+//        let deadload: Float = Float(textFieldDL.text!)!
+//
+//
+//        let numOfFloors: Float = Float(textFieldNumberOfFloors.text!)!
+//        let liveLoadOnFloor: Float = Float(textFieldLiveLoadOnFloor.text!)!
+//        
+//        
+//        let tribAreaPerim: Float = bayWidth*bayLength/2.0
+//        let tribAreaCorner: Float = bayWidth*bayLength/4.0
+//        let tribAreaRegular: Float = bayWidth*bayLength
+//        
+//        let totalLoad: Float = deadload+liveLoadOnFloor
+//        
+//        let perimLoad: Float = tribAreaPerim*totalLoad*numOfFloors
+//        let cornerLoad: Float = tribAreaCorner*totalLoad*numOfFloors
+//        let regularLoad: Float = tribAreaRegular*totalLoad*numOfFloors
+//        
+//        perimLoadFloat = perimLoad
+//        cornerLoadFloat = cornerLoad
+//        regularLoadFloat = regularLoad
+//        
+//        
+//        textFieldTribAreaPerimeterColumn.text = String.localizedStringWithFormat("%.1f", tribAreaPerim)
+//        textFieldTribAreaCornerColumn.text = String.localizedStringWithFormat("%.1f", tribAreaCorner)
+//        textFieldTribAreaRegularColumn.text = String.localizedStringWithFormat("%.1f", tribAreaRegular)
+//        
+//        textFieldLoadPerimColumn.text = String.localizedStringWithFormat("%.1f", perimLoad)
+//        textFieldLoadCornerColumn.text = String.localizedStringWithFormat("%.1f", cornerLoad)
+//        textFieldLoadRegularColumn.text = String.localizedStringWithFormat("%.1f", regularLoad)
+//        
+//        
+//
+//        
         
   
         
@@ -485,25 +487,26 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
             return
         }
         
-        let factorOfSafety: Float = Float(textFieldFactorOfSafety.text!)!
+        let factorOfSafetyMoment: Float = Float(textFieldfactorOfSafetyMoment.text!)!
+        let factorOfSafetyConcrete: Float = Float(textFieldFactorOfSafetyConcreteCompressiveStrength.text!)!
         
     
         
-        let soilBearingCapacity: Float = Float(textFieldSoilBearingCapacity.text!)!
+//        let soilBearingCapacity: Float = Float(textFieldSoilBearingCapacity.text!)!
+//        
+//        
+//        let dimensionPerimFooting = Float (sqrt(perimLoadFloat * factorOfSafety/soilBearingCapacity))
+//        let dimensionCornerFooting = Float (sqrt(cornerLoadFloat * factorOfSafety/soilBearingCapacity))
+//        let dimensionRegularFooting = Float (sqrt(regularLoadFloat * factorOfSafety/soilBearingCapacity))
+//        
+//        let stringPerim = String.localizedStringWithFormat("%.2f", dimensionPerimFooting)
+//        let stringCorner = String.localizedStringWithFormat("%.2f", dimensionCornerFooting)
+//        let stringRegular = String.localizedStringWithFormat("%.2f", dimensionRegularFooting)
         
-        
-        let dimensionPerimFooting = Float (sqrt(perimLoadFloat * factorOfSafety/soilBearingCapacity))
-        let dimensionCornerFooting = Float (sqrt(cornerLoadFloat * factorOfSafety/soilBearingCapacity))
-        let dimensionRegularFooting = Float (sqrt(regularLoadFloat * factorOfSafety/soilBearingCapacity))
-        
-        let stringPerim = String.localizedStringWithFormat("%.2f", dimensionPerimFooting)
-        let stringCorner = String.localizedStringWithFormat("%.2f", dimensionCornerFooting)
-        let stringRegular = String.localizedStringWithFormat("%.2f", dimensionRegularFooting)
-        
-        textFieldPerimeterFooting.text = String.localizedStringWithFormat("%@ by %@", stringPerim,stringPerim)
-        textFieldCornerFooting.text = String.localizedStringWithFormat("%@ by %@", stringCorner,stringCorner)
-        textFieldRegularFooting.text = String.localizedStringWithFormat("%@ by %@", stringRegular,stringRegular)
-        
+//        textFieldPerimeterFooting.text = String.localizedStringWithFormat("%@ by %@", stringPerim,stringPerim)
+//        textFieldCornerFooting.text = String.localizedStringWithFormat("%@ by %@", stringCorner,stringCorner)
+//        textFieldRegularFooting.text = String.localizedStringWithFormat("%@ by %@", stringRegular,stringRegular)
+//        
       
         
     }

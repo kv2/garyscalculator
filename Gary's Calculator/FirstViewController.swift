@@ -164,14 +164,14 @@ class FirstViewController: UIViewController,UIPickerViewDataSource,UIPickerViewD
             
             
             
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let controller = storyboard.instantiateViewController(withIdentifier: "GCEndBearingPileVC") as! GCEndBearingPileVC
-//            
-//            
-//            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//            
-//            self.navigationController?.pushViewController(controller, animated: true)
-//            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "GCEndBearingPileCalculatorVC") as! GCEndBearingPileCalculatorVC
+            
+            
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+            
             break;
             
         case 4 :
