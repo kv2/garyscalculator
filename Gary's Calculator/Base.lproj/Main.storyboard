@@ -4109,7 +4109,7 @@
                     <connections>
                         <outlet property="buttonCalculate" destination="imU-bQ-yDw" id="B0n-fR-W7J"/>
                         <outlet property="constraintBottom" destination="3uy-W1-Xvi" id="EeQ-O2-mGu"/>
-                        <outlet property="labelPileSectionDimension" destination="z5d-KE-VkL" id="n9X-7C-xGA"/>
+                        <outlet property="labelPileSectionDimension" destination="rfd-Ro-YsX" id="bJx-q3-axK"/>
                         <outlet property="scrollView" destination="V9j-HT-VjE" id="0MW-S0-YAz"/>
                         <outlet property="textFieldBldgHeight" destination="OAz-xc-rRq" id="hh3-RN-fgz"/>
                         <outlet property="textFieldBldgLength" destination="52R-bB-PC7" id="Egx-mU-wgp"/>

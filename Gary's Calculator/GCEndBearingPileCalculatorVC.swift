@@ -72,12 +72,8 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
     let pickerDataPileSection = ["Round","Square"]
     
     
-    var perimLoadFloat: Float = 0
-    var cornerLoadFloat: Float = 0
-    var regularLoadFloat: Float = 0
+    var pileSectionWord: String = "radius"
     
-
-
     var numberTranslateTextfield = 50
     var numberTranslatePicker = 150
     
@@ -212,7 +208,7 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
             
             cancelEditing()
             
-        } else if (textField.tag <= 6){
+        } else if (textField.tag <= 11){
             
             viewTemp?.becomeFirstResponder()
             scrollView.setContentOffset(CGPoint(x: 0, y: numberTranslateTextfield * textField.tag), animated: true)
@@ -229,36 +225,34 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
     }
     
     
-    func donePickerFloors(){
+    func donePickerPileSection(){
         
-        textFieldSoil.becomeFirstResponder()
-        let translationNumber = 5 * numberTranslateTextfield
+        
+        textFieldPileSectionDimension.becomeFirstResponder()
+        
+        let translationNumber = 7 * numberTranslateTextfield
         scrollView.setContentOffset(CGPoint(x: 0, y: translationNumber), animated: true)
+        
         
     }
     
+    
+
     func donePickerSoil(){
         
         textFieldLiveLoad.becomeFirstResponder()
-        let translationNumber = 6 * numberTranslateTextfield
+        let translationNumber = 10 * numberTranslateTextfield
         scrollView.setContentOffset(CGPoint(x: 0, y: translationNumber), animated: true)
         
     }
     
-    func donePickerPileSection(){
-        
-        textFieldPileSection.becomeFirstResponder()
-        let translationNumber = 6 * numberTranslateTextfield
-        scrollView.setContentOffset(CGPoint(x: 0, y: translationNumber), animated: true)
-        
-    }
-    
+
     
     func donePickerLiveLoad(){
     
         cancelEditing()
-//        let translationNumber = 9 * numberTranslateTextfield
-//        scrollView.setContentOffset(CGPoint(x: 0, y: translationNumber), animated: true)
+        let translationNumber = 11 * numberTranslateTextfield
+        scrollView.setContentOffset(CGPoint(x: 0, y: translationNumber), animated: true)
     }
     
     
@@ -374,7 +368,22 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
         } else if(pickerView === pickerPileSection){
             
             
+            textFieldPileSection.text = pickerDataPileSection[row]
             
+            
+            pileSectionWord = "radius"
+            
+            if(row == 0){
+                
+                pileSectionWord = "radius"
+                
+            } else {
+                
+                pileSectionWord = "square"
+            }
+            
+            
+            labelPileSectionDimension.text = String(format: "Pile %@%", pileSectionWord)
             
         }
 
