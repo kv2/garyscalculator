@@ -178,14 +178,14 @@ class FirstViewController: UIViewController,UIPickerViewDataSource,UIPickerViewD
             
             
             
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let controller = storyboard.instantiateViewController(withIdentifier: "GCSideFrictionPileVC") as! GCSideFrictionPileVC
-//            
-//            
-//            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//            
-//            self.navigationController?.pushViewController(controller, animated: true)
-//            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "GCSideBearingPileVC") as! GCSideBearingPileVC
+            
+            
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+
             break;
             
             
