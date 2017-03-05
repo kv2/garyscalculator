@@ -44,7 +44,10 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
     
     
     @IBOutlet weak var textFieldSoilBearingCapacity: UITextField!
+    @IBOutlet weak var textFieldSoilLateralBearingCapacity: UITextField!
     @IBOutlet weak var textFieldLiveLoadOnFloors: UITextField!
+    @IBOutlet weak var textFieldTotalLoadOfBuilding: UITextField!
+    
     
     @IBOutlet weak var textFieldMinDepthOfPile: UITextField!
     @IBOutlet weak var textFieldNumberOfPilesNeeded: UITextField!
@@ -55,7 +58,7 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
     var pickerLiveLoad: UIPickerView!
     var pickerPileSection: UIPickerView!
     
-    var totalLoadOnFooting: Float = 0
+ 
     
     
     let pickerDataSoil = ["Class 1: Crystalline bedrock",
@@ -73,6 +76,8 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
     
     
     var pileSectionWord: String = "radius"
+    var totalLoadOnBuilding: Float = 0.0
+    var momentExceededBy: Float = 0.0
     
     var numberTranslateTextfield = 50
     var numberTranslatePicker = 150
@@ -219,7 +224,7 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
             
         }
         
-        _ = calculateTributaryAreasAndLoadsOnColumns()
+        _ = calculateDeducedValues()
         
         return true
     }
@@ -253,6 +258,8 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
         cancelEditing()
         let translationNumber = 11 * numberTranslateTextfield
         scrollView.setContentOffset(CGPoint(x: 0, y: translationNumber), animated: true)
+        
+        
     }
     
     
@@ -326,22 +333,27 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
             if(row == 0){
                 
                 textFieldSoilBearingCapacity.text = "12000"
+                textFieldSoilLateralBearingCapacity.text = "1200"
                 
             } else if(row == 1){
                 
                 textFieldSoilBearingCapacity.text = "4000"
+                textFieldSoilLateralBearingCapacity.text = "400"
                 
             } else if(row == 2){
                 
                 textFieldSoilBearingCapacity.text = "3000"
+                textFieldSoilLateralBearingCapacity.text = "200"
                 
             } else if(row == 3){
                 
                 textFieldSoilBearingCapacity.text = "2000"
+                textFieldSoilLateralBearingCapacity.text = "150"
                 
             } else if(row == 4){
                 
                 textFieldSoilBearingCapacity.text = "1500"
+                textFieldSoilLateralBearingCapacity.text = "100"
                 
             }
 
@@ -379,16 +391,15 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
                 
             } else {
                 
-                pileSectionWord = "square"
+                pileSectionWord = "width"
             }
             
             
             labelPileSectionDimension.text = String(format: "Pile %@%", pileSectionWord)
-            
         }
 
         
-        _ = calculateTributaryAreasAndLoadsOnColumns()
+        _ = calculateDeducedValues()
         
         
     }
@@ -413,24 +424,51 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
     func checkIfLoadValuesAreSet() -> Bool{
     
         
-//        //let bayWidth = Float(textFieldStructGridBayWidth.text!)
-//
-//            
-//        if( (bayWidth != nil) &&
-//            (bayLength != nil) &&
-//            (deadload != nil)  &&
-//            (soilBearingCapacity != nil) &&
-//            (liveLoadOnFloor != nil) &&
-//            (numberOfFloors != nil)){
-//            
-//            return true
-//        }
+        let bldgHeight = Float(textFieldBldgHeight.text!)
+        let bldgLength = Float(textFieldBldgLength.text!)
+        let bldgSquareFootage = Float(textFieldTotalBldgSF.text!)
+        let bldgDeadLoad = Float(textFieldDeadload.text!)
         
+        let windSpeed = Float(textFieldWindspeed.text!)
+        let compressiveStrengthConcrete = Float(textFieldCompressiveStrengthConcrete.text!)
+        let factorOfSafetyMoment = Float(textFieldfactorOfSafetyMoment.text!)
+        let factorOfSafetyConcrete = Float(textFieldFactorOfSafetyConcreteCompressiveStrength.text!)
+        let pileSection = textFieldPileSection.text!
+        let pileDimension = Float(textFieldPileSectionDimension.text!)
+        
+        let soilBearingCapacity = Float(textFieldSoilBearingCapacity.text!)
+        let soilLatealBearingCapacity = Float(textFieldSoilLateralBearingCapacity.text!)
+        let liveloadDeduced = Float(textFieldLiveLoadOnFloors.text!)
+        
+        
+        
+        if(     (bldgHeight != nil) &&
+                (bldgLength != nil) &&
+                (bldgSquareFootage != nil) &&
+                (bldgDeadLoad != nil) &&
+                
+                (windSpeed != nil) &&
+                (compressiveStrengthConcrete != nil) &&
+                (factorOfSafetyMoment != nil) &&
+                (factorOfSafetyConcrete != nil) &&
+                //(pileSection == "") &&
+                (pileDimension != nil) &&
+                
+                (soilBearingCapacity != nil) &&
+                (soilLatealBearingCapacity != nil) &&
+                (liveloadDeduced != nil)
+          )
+        
+        {
+                
+                return true
+        }
+
         
         return false
     }
     
-    func calculateTributaryAreasAndLoadsOnColumns() -> Bool{
+    func calculateDeducedValues() -> Bool{
     
         
         if(!checkIfLoadValuesAreSet()){
@@ -439,42 +477,58 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
             return false
         }
         
+
+
 //        
-//        let bayWidth: Float = Float(textFieldStructGridBayWidth.text!)!
-//        let bayLength: Float = Float(textFieldStructGridBayLength.text!)!
-//        let deadload: Float = Float(textFieldDL.text!)!
-//
-//
-//        let numOfFloors: Float = Float(textFieldNumberOfFloors.text!)!
-//        let liveLoadOnFloor: Float = Float(textFieldLiveLoadOnFloor.text!)!
-//        
-//        
-//        let tribAreaPerim: Float = bayWidth*bayLength/2.0
-//        let tribAreaCorner: Float = bayWidth*bayLength/4.0
-//        let tribAreaRegular: Float = bayWidth*bayLength
-//        
-//        let totalLoad: Float = deadload+liveLoadOnFloor
-//        
-//        let perimLoad: Float = tribAreaPerim*totalLoad*numOfFloors
-//        let cornerLoad: Float = tribAreaCorner*totalLoad*numOfFloors
-//        let regularLoad: Float = tribAreaRegular*totalLoad*numOfFloors
-//        
-//        perimLoadFloat = perimLoad
-//        cornerLoadFloat = cornerLoad
-//        regularLoadFloat = regularLoad
-//        
-//        
-//        textFieldTribAreaPerimeterColumn.text = String.localizedStringWithFormat("%.1f", tribAreaPerim)
-//        textFieldTribAreaCornerColumn.text = String.localizedStringWithFormat("%.1f", tribAreaCorner)
-//        textFieldTribAreaRegularColumn.text = String.localizedStringWithFormat("%.1f", tribAreaRegular)
-//        
-//        textFieldLoadPerimColumn.text = String.localizedStringWithFormat("%.1f", perimLoad)
-//        textFieldLoadCornerColumn.text = String.localizedStringWithFormat("%.1f", cornerLoad)
-//        textFieldLoadRegularColumn.text = String.localizedStringWithFormat("%.1f", regularLoad)
-//        
-//        
-//
-//        
+        let bldgHeight = Float(textFieldBldgHeight.text!)!
+        let bldgLength = Float(textFieldBldgLength.text!)!
+        let bldgSquareFootage = Float(textFieldTotalBldgSF.text!)!
+        let bldgDeadLoad = Float(textFieldDeadload.text!)!
+        
+        let windSpeed = Float(textFieldWindspeed.text!)!
+        //let compressiveStrengthConcrete = Float(textFieldCompressiveStrengthConcrete.text!)!
+        let factorOfSafetyMoment = Float(textFieldfactorOfSafetyMoment.text!)!
+        //let factorOfSafetyConcrete = Float(textFieldFactorOfSafetyConcreteCompressiveStrength.text!)!
+        //let pileSection = textFieldPileSection.text!
+        //let pileDimension = Float(textFieldPileSectionDimension.text!)!
+        
+        //let soilBearingCapacity = Float(textFieldSoilBearingCapacity.text!)!
+        let liveloadDeduced = Float(textFieldLiveLoadOnFloors.text!)!
+        
+        
+    
+        
+        totalLoadOnBuilding = bldgSquareFootage * (liveloadDeduced + bldgDeadLoad)
+        textFieldTotalLoadOfBuilding.text = String.localizedStringWithFormat("%.0f", totalLoadOnBuilding)
+        
+        let windPressure = 0.00256*windSpeed*windSpeed
+        textFieldWindPressure.text = String.localizedStringWithFormat("%.2f", windPressure)
+        
+        let windForceOnBuilding = windPressure * bldgHeight * bldgLength * 0.5
+        textFieldWindForce.text = String.localizedStringWithFormat("%.0f", windForceOnBuilding)
+        
+        let momentOverturning = 1.0/3.0 * bldgHeight * windForceOnBuilding
+        textFieldOverturningMoment.text = String.localizedStringWithFormat("%.0f", momentOverturning)
+        
+        let momentRestorativeInnate = bldgLength/2.0 * totalLoadOnBuilding
+        textFieldBldgRestorativeMoment.text = String.localizedStringWithFormat("%.0f", momentRestorativeInnate)
+
+        momentExceededBy = momentOverturning * factorOfSafetyMoment  - momentRestorativeInnate
+        
+   
+        
+        
+        if(momentExceededBy > 0){
+            
+            textFieldRestorativeMomentExceededBy.text = String.localizedStringWithFormat("%.0f", momentExceededBy)
+            
+        } else {
+            
+            textFieldRestorativeMomentExceededBy.text = "0"
+            
+        }
+        
+        
         
   
         
@@ -489,34 +543,80 @@ class GCEndBearingPileCalculatorVC:UIViewController,UITextFieldDelegate,UIPicker
         
         cancelEditing()
         
-        if(!calculateTributaryAreasAndLoadsOnColumns()){
+        if(!calculateDeducedValues()){
             
             print("null vals2")
             showAlert(titleStr: "Error", messageStr: "Please make sure all fields are filled and try again")
             return
         }
         
-        let factorOfSafetyMoment: Float = Float(textFieldfactorOfSafetyMoment.text!)!
-        let factorOfSafetyConcrete: Float = Float(textFieldFactorOfSafetyConcreteCompressiveStrength.text!)!
         
+        
+//        let bldgHeight = Float(textFieldBldgHeight.text!)!
+//        let bldgLength = Float(textFieldBldgLength.text!)!
+//        let bldgSquareFootage = Float(textFieldTotalBldgSF.text!)!
+//        let bldgDeadLoad = Float(textFieldDeadload.text!)!
+        
+//        let windSpeed = Float(textFieldWindspeed.text!)!
+        let compressiveStrengthConcrete = Float(textFieldCompressiveStrengthConcrete.text!)!
+//        let factorOfSafetyMoment = Float(textFieldDeadload.text!)!
+        let factorOfSafetyConcrete = Float(textFieldFactorOfSafetyConcreteCompressiveStrength.text!)!
+        let pileSection = textFieldPileSection.text!
+        let pileDimension = Float(textFieldPileSectionDimension.text!)!
+        
+        let soilBearingCapacity = Float(textFieldSoilBearingCapacity.text!)!
+        let soilLateralBearingCapacity = Float(textFieldSoilLateralBearingCapacity.text!)!
+//        let liveloadDeduced = Float(textFieldLiveLoadOnFloors.text!)!
+        
+        
+     
+       
+        
+        var deducedPileAreaSF: Float = 0
+        
+        var deducedPileCrossSectionalWidthInches: Float = 0
+        
+        if(pileSection == "Round"){
+            
+            deducedPileAreaSF = Float.pi*pileDimension*pileDimension/144.0
+            deducedPileCrossSectionalWidthInches = pileDimension * 2.0
+            
+        } else {
+            
+            deducedPileAreaSF = pileDimension*pileDimension/144.0
+            deducedPileCrossSectionalWidthInches = pileDimension
+        }
     
         
-//        let soilBearingCapacity: Float = Float(textFieldSoilBearingCapacity.text!)!
-//        
-//        
-//        let dimensionPerimFooting = Float (sqrt(perimLoadFloat * factorOfSafety/soilBearingCapacity))
-//        let dimensionCornerFooting = Float (sqrt(cornerLoadFloat * factorOfSafety/soilBearingCapacity))
-//        let dimensionRegularFooting = Float (sqrt(regularLoadFloat * factorOfSafety/soilBearingCapacity))
-//        
-//        let stringPerim = String.localizedStringWithFormat("%.2f", dimensionPerimFooting)
-//        let stringCorner = String.localizedStringWithFormat("%.2f", dimensionCornerFooting)
-//        let stringRegular = String.localizedStringWithFormat("%.2f", dimensionRegularFooting)
+        var governingStrengthSoilOrConcrete = soilBearingCapacity
+        let concreteCompressiveStrengthPSFAdjusted = compressiveStrengthConcrete*144 / factorOfSafetyConcrete
         
-//        textFieldPerimeterFooting.text = String.localizedStringWithFormat("%@ by %@", stringPerim,stringPerim)
-//        textFieldCornerFooting.text = String.localizedStringWithFormat("%@ by %@", stringCorner,stringCorner)
-//        textFieldRegularFooting.text = String.localizedStringWithFormat("%@ by %@", stringRegular,stringRegular)
-//        
-      
+        
+        if (soilBearingCapacity>concreteCompressiveStrengthPSFAdjusted){
+            
+            governingStrengthSoilOrConcrete = concreteCompressiveStrengthPSFAdjusted
+            
+        }
+        
+        let numberOfPilesRequired: Float = totalLoadOnBuilding / (deducedPileAreaSF * governingStrengthSoilOrConcrete)
+        textFieldNumberOfPilesNeeded.text = String.localizedStringWithFormat("%d", Int(ceil(numberOfPilesRequired)))
+        
+        
+        
+        
+        if(momentExceededBy > 0){
+        
+            let depthOfPilesRequired = sqrt(2*Float.abs(momentExceededBy)/(soilLateralBearingCapacity * (deducedPileCrossSectionalWidthInches / 12.0) * numberOfPilesRequired))
+            textFieldMinDepthOfPile.text = String.localizedStringWithFormat("%.2f", depthOfPilesRequired)
+            
+            
+        } else {
+            
+            textFieldMinDepthOfPile.text = "None"
+        }
+
+     
+        
         
     }
     
