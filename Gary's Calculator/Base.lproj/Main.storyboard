@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Izx-Aq-ohX">
-                                <rect key="frame" x="8" y="28" width="359" height="530"/>
+                                <rect key="frame" x="8" y="85" width="359" height="473"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">DISCLAIMER:   NOT FOR CONSTRUCTION. THE USE OF THIS PROGRAM IS PROHIBITED, UNDER ANY CIRCUMSTANCES, TO BE USED AS A TOOL FOR STRUCTURAL CALCULATIONS. PLEASE CONSULT A LICENSED DESIGN PROFESSIONAL. THERE IS NO WARRANTY FOR THE PROGRAM TO THE EXTENT PERMITTED BY APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU.      LICENSE: 
 GNU GENERAL PUBLIC LICENSE
@@ -264,18 +264,28 @@ The GNU General Public License does not permit incorporating your program into p
                                     <action selector="agreeButtonDidTouchup" destination="1H7-u3-mYl" eventType="touchUpInside" id="F5W-hc-i6T"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5S-RX-KcX">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="EULA" id="lww-gU-UMf"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="tTa-tx-Jc4" secondAttribute="trailing" constant="120" id="4Za-52-ZsY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Izx-Aq-ohX" secondAttribute="trailing" constant="-8" id="BHO-n6-PV6"/>
                             <constraint firstItem="piQ-6B-yZa" firstAttribute="top" secondItem="tTa-tx-Jc4" secondAttribute="bottom" constant="47" id="Jgs-yA-s0w"/>
                             <constraint firstItem="tTa-tx-Jc4" firstAttribute="leading" secondItem="opw-EC-qeP" secondAttribute="leadingMargin" constant="119" id="ZMR-Al-n0S"/>
-                            <constraint firstItem="Izx-Aq-ohX" firstAttribute="top" secondItem="rCu-5W-hRy" secondAttribute="bottom" constant="8" id="cky-gt-aLy"/>
+                            <constraint firstItem="Izx-Aq-ohX" firstAttribute="top" secondItem="rCu-5W-hRy" secondAttribute="bottom" constant="65" id="cky-gt-aLy"/>
                             <constraint firstItem="Izx-Aq-ohX" firstAttribute="leading" secondItem="opw-EC-qeP" secondAttribute="leadingMargin" constant="-8" id="cqj-vR-hld"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="K5S-RX-KcX" secondAttribute="trailing" constant="-16" id="d1u-a5-CLO"/>
+                            <constraint firstItem="K5S-RX-KcX" firstAttribute="leading" secondItem="opw-EC-qeP" secondAttribute="leadingMargin" constant="-16" id="gQ1-rt-Cc3"/>
                             <constraint firstItem="tTa-tx-Jc4" firstAttribute="top" secondItem="Izx-Aq-ohX" secondAttribute="bottom" constant="32" id="gkd-O9-Ks7"/>
+                            <constraint firstItem="K5S-RX-KcX" firstAttribute="top" secondItem="rCu-5W-hRy" secondAttribute="bottom" id="sqB-SR-FPn"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="hue-5R-g9D"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAv-9X-DDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -294,7 +304,7 @@ The GNU General Public License does not permit incorporating your program into p
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rnd-Qp-HbY">
-                                <rect key="frame" x="0.0" y="453" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="404" width="375" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Vtq-fY-BHh"/>
                                 </constraints>
@@ -304,7 +314,7 @@ The GNU General Public License does not permit incorporating your program into p
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UE1-J8-8Vt">
-                                <rect key="frame" x="16" y="616" width="343" height="30"/>
+                                <rect key="frame" x="16" y="567" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1qH-IR-nEF"/>
                                     <constraint firstAttribute="width" constant="343" id="bRB-0S-YTJ"/>
@@ -315,7 +325,7 @@ The GNU General Public License does not permit incorporating your program into p
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g2S-tG-3d7">
-                                <rect key="frame" x="12" y="24" width="347" height="347"/>
+                                <rect key="frame" x="12" y="68" width="347" height="347"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="g2S-tG-3d7" secondAttribute="height" multiplier="1:1" id="UAC-M4-K95"/>
                                 </constraints>
@@ -1305,7 +1315,7 @@ The GNU General Public License does not permit incorporating your program into p
         <!--Reference-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Gary_s_Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Gary_s_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -1314,35 +1324,61 @@ The GNU General Public License does not permit incorporating your program into p
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="83" y="313" width="210" height="42"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="80" y="363" width="215" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePW-Gk-JdF">
+                                <rect key="frame" x="20" y="93" width="334" height="169"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="169" id="Jb8-33-k3L"/>
+                                </constraints>
+                                <string key="text">Project completed per California Polytechnic  (Cal Poly Pomona) Professor Gary McGavin's instructions. Scope of project is a program to ease calculation of common foundations for simplified designs.   Kirill Volchinskiy 2017  CBC 2016</string>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table1809" translatesAutoresizingMaskIntoConstraints="NO" id="ddh-wy-ClA">
+                                <rect key="frame" x="20" y="458" width="334" height="85"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table1806-2" translatesAutoresizingMaskIntoConstraints="NO" id="aP2-bG-aSS">
+                                <rect key="frame" x="20" y="282" width="334" height="166"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                            <constraint firstItem="ddh-wy-ClA" firstAttribute="trailing" secondItem="aP2-bG-aSS" secondAttribute="trailing" id="ESe-Vc-pJT"/>
+                            <constraint firstItem="aP2-bG-aSS" firstAttribute="trailing" secondItem="ePW-Gk-JdF" secondAttribute="trailing" id="NuL-AT-oRa"/>
+                            <constraint firstItem="ePW-Gk-JdF" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="4" id="Pi0-lB-NrI"/>
+                            <constraint firstItem="aP2-bG-aSS" firstAttribute="top" secondItem="ePW-Gk-JdF" secondAttribute="bottom" constant="20" id="XaF-WR-dbh"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="ddh-wy-ClA" secondAttribute="bottom" constant="75" id="cUL-7p-Em1"/>
+                            <constraint firstItem="ddh-wy-ClA" firstAttribute="top" secondItem="aP2-bG-aSS" secondAttribute="bottom" constant="10" id="fO9-uh-YjC"/>
+                            <constraint firstItem="ddh-wy-ClA" firstAttribute="leading" secondItem="aP2-bG-aSS" secondAttribute="leading" id="vEl-eT-cVY"/>
+                            <constraint firstItem="aP2-bG-aSS" firstAttribute="leading" secondItem="ePW-Gk-JdF" secondAttribute="leading" id="vkf-jb-l0U"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ePW-Gk-JdF" secondAttribute="trailing" constant="5" id="wVO-y7-3qV"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Reference" image="tabbarIconInfo" id="cPa-gy-q4n">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" title="Reference" id="qY7-N6-8OI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="1485.5999999999999" y="478.11094452773619"/>
+        </scene>
+        <!--Reference-->
+        <scene sceneID="oM7-qz-JxE">
+            <objects>
+                <navigationController id="SLT-ax-Rag" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Reference" image="tabbarIconInfo" id="rzS-ma-D7s"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ggI-f3-Sry">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="Nzm-qh-RBX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kmG-Ow-MY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="758" y="449"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1356,7 +1392,7 @@ The GNU General Public License does not permit incorporating your program into p
                     </tabBar>
                     <connections>
                         <segue destination="pvk-IQ-GVW" kind="relationship" relationship="viewControllers" id="n4p-wF-SZG"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="fa5-6K-tk7"/>
+                        <segue destination="SLT-ax-Rag" kind="relationship" relationship="viewControllers" id="c5x-9z-0sB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -5197,5 +5233,7 @@ The GNU General Public License does not permit incorporating your program into p
     <resources>
         <image name="tabbarIconFx" width="30" height="30"/>
         <image name="tabbarIconInfo" width="30" height="30"/>
+        <image name="table1806-2" width="525" height="166"/>
+        <image name="table1809" width="524" height="85"/>
     </resources>
 </document>
