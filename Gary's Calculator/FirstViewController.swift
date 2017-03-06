@@ -32,10 +32,31 @@ class FirstViewController: UIViewController,UIPickerViewDataSource,UIPickerViewD
     override func viewWillAppear(_ animated: Bool) {
         
         buttonCalc .setTitle("Calculate SOG", for: .normal)
+        
+        
+        if(!self.hasAgreedEULA()){
+            
+            self.performSegue(withIdentifier: "showEULA", sender: nil)
+          
+            
+        }
     }
     
     
-    
+    func hasAgreedEULA() -> Bool{
+        
+        
+        let defaults = UserDefaults.standard
+        
+        if(defaults.bool(forKey: "EULAAGREED") == true){
+            
+            return true
+        }
+        
+        
+        return false
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
