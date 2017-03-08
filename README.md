@@ -7,3 +7,4 @@ Project completed per California State Polytechnic University Pomona (Cal Poly P
 
 Kirill Volchinskiy 2017
  
+https://itunes.apple.com/us/app/garys-calculator/id1212545137?mt=8
